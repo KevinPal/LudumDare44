@@ -7,17 +7,33 @@ class Tower {
 		this.projectile_svg = projectile_svg;
 		this.position = position;
 		this.draw = this.draw.bind(this);
+		this.time = 0;
+		this.tower_group = two.interpret(this.tower_svg);
+		this.tower_group.translation.copy(this.position);
+		this.projectiles = []
 	}
 
-	draw(enemies){
-		for (var i = 0; i < enemies.length; i++) {
-			dx = this.position.x - enemies[i].x;
-			dy = this.position.y - enemies[i].y;
-			r = Math.sqrt(dx * dx + dy * dy);
-			if (r <= this.damage_radius) {
-				enemies[i].die();
+	draw(enemies, deltaTime){
+		this.time += deltaTime;
+		if (this.time > this.fire_rate){
+			for (var i = 0; i < enemies.length; i++) {
+				var dx = enemies[i].position.x - this.position.x;
+				var dy = enemies[i].position.y - this.position.y;
+				var r = Math.sqrt(dx * dx + dy * dy);
+				if (r <= this.damage_radius) {
+					console.log("Close!");
+					enemies[i].attack(this.damage_value);
+				}
+
+				var projectile = two.interpret(this.projectile_svg);
+				projectile.translation.copy(this.position);
+				this.projectiles.push(projectile)
+				projectile.trajectory = new Two.Vector(dx, dy)
+				var laser = two.makeRectangle(this.position.x, this.position.y, 2 * Math.sqrt(dx*dx + dy*dy), 10);
+				laser.rotation = Math.atan(dy/dx);
 			}
+			this.time -= this.fire_rate;
 		}
 	}
-	
+
 }

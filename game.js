@@ -18,6 +18,8 @@ var death = function(e) {
 }
 var enemy = new Enemy(speed, spawn, rails, death, rect);
 
+var tower = new Tower(1000, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), new Two.Vector(0, 0));
+
 two.bind('update', function(frameCount) {
 	if(keys["Control"]) {
 		panSpeed.addSelf(mouseDelta.clone().multiplyScalar(-.5));
@@ -29,6 +31,7 @@ two.bind('update', function(frameCount) {
 
 	two.scene.translation.addSelf(panSpeed);
 	enemy.update(two.timeDelta);
+	tower.draw([enemy], two.timeDelta);
 
 }).play();  // Finally, start the animation loop
 

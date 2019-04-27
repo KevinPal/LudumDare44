@@ -36,4 +36,9 @@ class Enemy {
         this.rails = rails;
     }
 
+
+    attack(number) {
+	    console.log("I GOT SHOT BY: " + number)
+    }
+
 }
