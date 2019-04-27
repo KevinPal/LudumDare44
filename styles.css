@@ -20,11 +20,21 @@
 
 html {
 	background: var(--main-bg-color);
+	font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+body {
+	margin: 0;
 }
 
 h1.game-title {
-	background: var(--main-bg-color);
-	color: var(--main-text-color);
+	background: var(--main-fg-color);
+	color: var(--main-bg-color);
+	font-size: 48pt;
+	margin: 8pt;
+	height: 10vw;
+	text-align: center;
+	line-height: 10vw;
 }
 
 div.game{
