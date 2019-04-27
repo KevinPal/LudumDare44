@@ -18,7 +18,7 @@ var death = function(e) {
 }
 var enemy = new Enemy(speed, spawn, rails, death, rect);
 
-var tower = new Tower(1000, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), new Two.Vector(0, 0));
+var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), new Two.Vector(0, 0));
 
 two.bind('update', function(frameCount) {
 	if(keys["Control"]) {

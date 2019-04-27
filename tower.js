@@ -20,17 +20,18 @@ class Tower {
 				var dx = enemies[i].position.x - this.position.x;
 				var dy = enemies[i].position.y - this.position.y;
 				var r = Math.sqrt(dx * dx + dy * dy);
+				console.log("distance: " + r);
 				if (r <= this.damage_radius) {
 					enemies[i].attack(this.damage_value);
+					var projectile = two.interpret(this.projectile_svg);
+					projectile.translation.copy(this.position);
+					this.projectiles.push(projectile)
+					projectile.trajectory = new Two.Vector(dx, dy)
+					var laser = two.makeRectangle(this.position.x, this.position.y, 2 * Math.sqrt(dx*dx + dy*dy), 10);
+					laser.rotation = Math.atan(dy/dx);
+					setTimeout( () => {two.remove(laser)}, 100);
 				}
 
-				var projectile = two.interpret(this.projectile_svg);
-				projectile.translation.copy(this.position);
-				this.projectiles.push(projectile)
-				projectile.trajectory = new Two.Vector(dx, dy)
-				var laser = two.makeRectangle(this.position.x, this.position.y, 2 * Math.sqrt(dx*dx + dy*dy), 10);
-				laser.rotation = Math.atan(dy/dx);
-				setTimeout( () => {two.remove(laser)}, 100);
 			}
 			this.time -= this.fire_rate;
 		}
