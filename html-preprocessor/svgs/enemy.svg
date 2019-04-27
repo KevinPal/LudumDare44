@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg  version="1.1" id="tower" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="323.984" height="425.979"
+<svg  version="1.1" id="enemy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="323.984" height="425.979"
 	 viewBox="0 0 323.984 425.979" overflow="visible" enable-background="new 0 0 323.984 425.979" xml:space="preserve">
-	 <rect width="100" height="100" style="fill: rgb(102, 217, 239)"/>
+	 <rect width="100" height="100" style="fill: rgb(249, 38, 177);stroke-width:3;stroke:rgb(255, 255, 255)"/>
 </svg>

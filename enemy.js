@@ -1,5 +1,4 @@
 class Enemy {
-
     update(deltaTime) {
         this.d += this.speed * (deltaTime / 1000);
         var currentRail = this.rails[this.currentRail]
@@ -19,14 +18,15 @@ class Enemy {
         
         this.position = new Two.Vector(this.vecRailPos.x + this.d * Math.cos(angle), this.vecRailPos.y + this.d * Math.sin(angle));
 
-        this.twoObject.translation.copy(this.position);
+        this.enemyGroup.translation.copy(this.position);
+	
     }
 
 
-    constructor(speed, spawn, rails, deathFunction, twoObject) {
+    constructor(speed, spawn, rails, deathFunction, health, svg) {
         this.speed = speed;
         this.d = 0;
-        this.twoObject = twoObject;
+        this.enemyGroup = two.interpret(svg);
         this.update = this.update.bind(this);
         this.destroy = deathFunction;
 
@@ -34,11 +34,16 @@ class Enemy {
         this.vecRailPos = spawn;
         this.currentRail = 0;
         this.rails = rails;
+
+	this.health = health;
     }
 
 
-    attack(number) {
-	    console.log("I GOT SHOT BY: " + number)
+    attack(damage) {
+	    this.health -= damage;
+	    if (this.health <= 0) {
+		two.remove(this.enemyGroup);
+	    }
     }
 
 }

@@ -1,11 +1,10 @@
 var elem = document.getElementById('draw-shapes');
-var params = { width: 285, height: 200, fullscreen:true };
+var params = {fullscreen: true};
 var two = new Two(params).appendTo(elem);
 
 var line = new Two.Line(0, 0, 20, 25);
 
 //var pig = two.interpret(document.getElementById('pig'))
-var rect = two.makeRectangle(213, 100, 100, 100);
 two.update();
 
 var rails = [new Two.Vector(300, 0), new Two.Vector(0, 100),
@@ -16,7 +15,8 @@ var spawn = new Two.Vector(150, 150);
 var death = function(e) {
 
 }
-var enemy = new Enemy(speed, spawn, rails, death, rect);
+var enemy = new Enemy(speed, spawn, rails, death, 5, document.getElementById('enemy'));
+var enemies = [enemy];
 
 var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), new Two.Vector(0, 0));
 
@@ -30,8 +30,16 @@ two.bind('update', function(frameCount) {
 	}
 
 	two.scene.translation.addSelf(panSpeed);
-	enemy.update(two.timeDelta);
-	tower.draw([enemy], two.timeDelta);
+	for (var i = 0; i < enemies.length; i++) {
+		enemies[i].update(two.timeDelta);
+	}
+
+	for (var i = enemies.length; i > 0; i--) {
+		if (enemies[i - 1].health < 0) {
+			enemies.splice(i - 1, 1);
+		}
+	}
+	tower.draw(enemies, two.timeDelta);
 
 }).play();  // Finally, start the animation loop
 
