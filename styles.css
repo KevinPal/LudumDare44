@@ -1,6 +1,6 @@
 :root {
 	--main-bg-color: #272822;
-	--main-fg-color: #3f3f3f;
+	--main-fg-color: #f995ce;
 	--main-text-color: #f8f8f2;
 }
 ::-webkit-scrollbar {
@@ -28,5 +28,35 @@ h1.game-title {
 }
 
 div.game{
+	background-color: var(--main-text-color);
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+}
 
+div.Description {
+	color: var(--main-text-color);
+	padding: 1em;
+}
+
+div.Description h1.DescriptionTitle {
+	text-align: center;
+	margin: 0;
+}
+
+img.Screenshot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+}
+
+a {
+	color: var(--main-fg-color);
+	text-decoration: none;
+	border-bottom: 1px solid var(--main-fg-color);
 }

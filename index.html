@@ -9,29 +9,18 @@
 		<h1 class="game-title" style="height: 10vw; text-align: center">
 			Pig Migration Extermination!
 		</h1>
-		<div class="game" id="draw-shapes" style="text-align: center">
+		<div style="display: grid; grid-template-columns: 50% 50%; margin-left: 20vw; margin-right: 20vw">
+			<div class="Description">
+				<img src="./screenshot.jpg"/ style="width: 100%">
+			</div>
+			<div class="Description">
+				<h1 class="DescriptionTitle">Pigs!</h1>
+				<p>
+				Play as Elon Musk and be the first person to go to Mars!
+				</p>
+				<h1 class="DescriptionTitle">Play Now!</h1>
+				<a href="./game.html" style="">CLICK HERE!</a>
+			</div>
 		</div>
 	</body>
-	<script>
-		var elem = document.getElementById('draw-shapes');
-		var params = { width: 285, height: 200 };
-		var two = new Two(params).appendTo(elem);
-
-		// two has convenience methods to create shapes.
-		var circle = two.makeCircle(72, 100, 50);
-		var rect = two.makeRectangle(213, 100, 100, 100);
-
-		// The object returned has many stylable properties:
-		circle.fill = '#FF8000';
-		circle.stroke = 'orangered'; // Accepts all valid css color
-		circle.linewidth = 5;
-
-		rect.fill = 'rgb(0, 200, 255)';
-		rect.opacity = 0.75;
-		rect.noStroke();
-
-		// Don't forget to tell two to render everything
-		// to the screen
-		two.update();
-	</script>
 </html>
