@@ -19,7 +19,6 @@ var death = function(e) {
     enemies = enemies.filter( (value, index, arr) => value != e);
 }
 
-
 var enemy = new Enemy(speed, spawn, rails, death, rect);
 enemies.push(enemy);
 
