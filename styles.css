@@ -1,0 +1,32 @@
+:root {
+	--main-bg-color: #272822;
+	--main-fg-color: #3f3f3f;
+	--main-text-color: #f8f8f2;
+}
+::-webkit-scrollbar {
+	width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--main-bg-color)
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--main-fg-color);
+	border-radius: 3.5px;
+}
+
+html {
+	background: var(--main-bg-color);
+}
+
+h1.game-title {
+	background: var(--main-bg-color);
+	color: var(--main-text-color);
+}
+
+div.game{
+
+}
