@@ -4,22 +4,8 @@ var two = new Two(params).appendTo(elem);
 
 var line = new Two.Line(0, 0, 20, 25);
 
-// two has convenience methods to create shapes.
-var circle = two.makeCircle(72, 100, 50);
-var rect = two.makeRectangle(213, 100, 100, 100);
+var pig = two.interpret(document.getElementById('pig'))
 
-
-// The object returned has many stylable properties:
-circle.fill = '#FF8000';
-circle.stroke = 'orangered'; // Accepts all valid css color
-circle.linewidth = 5;
-
-rect.fill = 'rgb(0, 200, 255)';
-rect.opacity = 0.75;
-rect.noStroke();
-
-// Don't forget to tell two to render everything
-// to the screen
 two.update();
 
 var rails = [new Two.Vector(3, 4), new Two.Vector(5, -3)]
@@ -28,7 +14,7 @@ var spawn = new Two.Vector(150, 150);
 var death = function(e) {
 
 }
-var enemy = new Enemy(speed, spawn, rails, death, rect);
+var enemy = new Enemy(speed, spawn, rails, death, pig);
 
 two.bind('update', function(frameCount) {
 	if(keys["Control"]) {
