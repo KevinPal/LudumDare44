@@ -1,14 +1,10 @@
-var elem = document.getElementById('draw-shapes');
-var params = { width: 285, height: 200, fullscreen:true };
-var two = new Two(params).appendTo(elem);
-
-var line = new Two.Line(0, 0, 20, 25);
 
 //var pig = two.interpret(document.getElementById('pig'))
 var rect = two.makeRectangle(213, 100, 100, 100);
 two.update();
 
-var state = 0;
+var state = 0; //0 -> game, 1-> shop, 2-> placement
+var shopState = 0; //0 -> window opening, 1-> window displayed, 2-> window closing then game, 3-> shop closing then place
 
 var rails = [new Two.Vector(300, 0), new Two.Vector(0, 100),
 new Two.Vector(200, 0), new Two.Vector(0, 500),
@@ -29,23 +25,30 @@ enemies.push(enemy);
 
 var shopBtnText = two.makeTexture(document.getElementById('shop_btn'));
 var shopBtn = two.makeRectangle(two.width * .9, two.height * .9 , 100, 100);
+two.update();
+
+shopBtn._renderer.elem.onclick = () => {
+    if(state == 0) {
+        state = 1;
+        shopState = 0;
+    } else if(state == 1) {
+        shopState = 2;
+    }
+}
+
 shopBtn.fill = shopBtnText;
 shopBtn.noStroke();
 
 rect.fill = shopBtnText;
 
 two.bind('update', function(frameCount) {
-	if(keys["Control"]) {
-		panSpeed.addSelf(mouseDelta.clone().multiplyScalar(-.5));
-	}
-	panSpeed.divideScalar(1.1);
-	if(panSpeed.isZero()) {
-		panSpeed.clear();
-	}
 
-	two.scene.translation.addSelf(panSpeed);
-    for(var i = 0; i < enemies.length; i++) {
-	    enemies[i].update(two.timeDelta);
+    if(state == 0) {
+        for(var i = 0; i < enemies.length; i++) {
+            enemies[i].update(two.timeDelta);
+        }
+    } else if(state == 1){
+        shopUpdate(two.timeDelta);
     }
 
 }).play();  // Finally, start the animation loop
