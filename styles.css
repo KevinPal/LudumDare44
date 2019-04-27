@@ -68,5 +68,5 @@ img.Screenshot {
 a {
 	color: var(--main-fg-color);
 	text-decoration: none;
-	border-bottom: 1px solid var(--main-fg-color);
+	text-align: center;
 }
