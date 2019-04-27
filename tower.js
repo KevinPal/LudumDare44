@@ -31,7 +31,7 @@ class Tower {
 				projectile.trajectory = new Two.Vector(dx, dy)
 				var laser = two.makeRectangle(this.position.x, this.position.y, 2 * Math.sqrt(dx*dx + dy*dy), 10);
 				laser.rotation = Math.atan(dy/dx);
-				setTimeout( () => {console.log("REMOVE!"); two.remove(laser)}, 500);
+				setTimeout( () => {console.log("REMOVE!"); two.remove(laser)}, 100);
 			}
 			this.time -= this.fire_rate;
 		}
