@@ -1,5 +1,4 @@
 class Enemy {
-
     update(deltaTime) {
         this.d += this.speed * (deltaTime / 1000);
         var currentRail = this.rails[this.currentRail]
@@ -20,21 +19,34 @@ class Enemy {
         
         this.position = new Two.Vector(this.vecRailPos.x + this.d * Math.cos(angle), this.vecRailPos.y + this.d * Math.sin(angle));
 
-        this.twoObject.translation.copy(this.position);
+        this.enemyGroup.translation.copy(this.position);
+	
     }
 
 
-    constructor(speed, spawn, rails, deathFunction, twoObject) {
+    constructor(speed, spawn, rails, deathFunction, health, svg) {
         this.speed = speed;
         this.d = 0;
-        this.twoObject = twoObject;
+        this.enemyGroup = two.interpret(svg);
+        gameLayer.add(this.enemyGroup);
         this.update = this.update.bind(this);
         this.destroy = deathFunction;
 
-        this.position = spawn;
-        this.vecRailPos = spawn;
+        this.position = spawn.clone();
+        this.vecRailPos = spawn.clone();
         this.currentRail = 0;
         this.rails = rails;
+
+        this.health = health;
+    }
+
+
+    attack(damage) {
+	    this.health -= damage;
+	    if (this.health <= 0) {
+            gameLayer.remove(this.enemyGroup);
+            this.destroy(this);
+	    }
     }
 
 }

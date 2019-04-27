@@ -28,6 +28,83 @@ function placeTowerWrapper(towerNum) {
     return foo;
 }
 
+UILayer.add(shopGroup);
+
+var placementTiles = [];
+var towerDim = 100;
+var selectedTile;
+function generateTileBoard(spawn, rails) {
+
+    function onTileClick() {
+        if(state == 2) {
+            console.log(selectedTile.translation);
+            var placementPos = selectedTile.translation.clone();
+            var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), placementPos);
+            towers.push(tower);
+            state = 1;
+            shopState = 0;
+            }
+    }
+    
+    for(var i = 0; i < w / towerDim; i++) {
+        for(var j = 0; j < h / towerDim; j ++) {
+            var newRect = two.makeRectangle(towerDim * i, towerDim * j, towerDim, towerDim);
+            var vectStart = spawn.clone();
+            var intersects = false;
+            debug = j == 4 && i == 2;
+            for(var k = 0; k < rails.length; k++) {
+                if(lineIntersectsRect(vectStart, vectStart.clone().addSelf(rails[k]), newRect)) {
+                    intersects = true;
+                    break;
+                } else {
+                    vectStart.addSelf(rails[k]);
+                }
+            }
+            if(!intersects) {
+                newRect.opacity = 0.5;
+                placementTiles[j * Math.ceil(w / towerDim) + i] = newRect;
+            } else {
+                two.remove(newRect);
+            }
+        }
+    }
+    var placementPanel = two.makeGroup(placementTiles);
+    two.update();
+    for(var i = 0; i < placementTiles.length; i++) {
+        if(placementTiles[i]) {
+            placementTiles[i]._renderer.elem.onclick = onTileClick;
+        }
+    }
+
+    tileLayer.add(placementPanel);
+}
+
+function placementUpdate(delta) {
+    for(var i = 0; i < placementTiles.length; i++) {
+        if(!placementTiles[i]) {
+            continue;
+        }
+        if(state != 2) {
+            placementTiles[i].opacity = .1;
+        } else {
+            placementTiles[i].opacity = .5;
+        }
+    }
+    for(var i = 0; i < placementTiles.length; i++) {
+        var tile = placementTiles[i];
+        if(!tile) {
+            continue;
+        }
+        if(tile.translation.x - towerDim/2 < mousePos.x && mousePos.x <= tile.translation.x + towerDim/2 &&
+        tile.translation.y + towerDim/2 < mousePos.y && mousePos.y <= tile.translation.y + 3*towerDim/2) {
+            placementTiles[i].fill = '#999999';
+            selectedTile = placementTiles[i];
+        } else {
+            placementTiles[i].fill = '#c9c9c9';
+        }
+    }
+
+}
 
 function shopUpdate(delta) {
     if(state != 1) {
