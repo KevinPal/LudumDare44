@@ -8,15 +8,31 @@ var line = new Two.Line(0, 0, 20, 25);
 var rect = two.makeRectangle(213, 100, 100, 100);
 two.update();
 
+var state = 0;
+
 var rails = [new Two.Vector(300, 0), new Two.Vector(0, 100),
 new Two.Vector(200, 0), new Two.Vector(0, 500),
 new Two.Vector(-300, 0), new Two.Vector(0, 100)]
 var speed = 100;
 var spawn = new Two.Vector(150, 150);
-var death = function(e) {
 
+
+enemies = [];
+
+var death = function(e) {
+    enemies = enemies.filter( (value, index, arr) => value != e);
 }
+
+
 var enemy = new Enemy(speed, spawn, rails, death, rect);
+enemies.push(enemy);
+
+var shopBtnText = two.makeTexture(document.getElementById('shop_btn'));
+var shopBtn = two.makeRectangle(two.width * .9, two.height * .9 , 100, 100);
+shopBtn.fill = shopBtnText;
+shopBtn.noStroke();
+
+rect.fill = shopBtnText;
 
 two.bind('update', function(frameCount) {
 	if(keys["Control"]) {
@@ -28,7 +44,9 @@ two.bind('update', function(frameCount) {
 	}
 
 	two.scene.translation.addSelf(panSpeed);
-	enemy.update(two.timeDelta);
+    for(var i = 0; i < enemies.length; i++) {
+	    enemies[i].update(two.timeDelta);
+    }
 
 }).play();  // Finally, start the animation loop
 

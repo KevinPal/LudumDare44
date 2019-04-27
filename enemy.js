@@ -12,6 +12,7 @@ class Enemy {
             currentRail = this.rails[this.currentRail]
             if(!currentRail) {
                 this.destroy(this);
+                return;
             }
         }
 
