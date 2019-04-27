@@ -38,8 +38,13 @@
 		// to the screen
 		two.update();
 
-        var rails = [new Two.Vector(10, 10), new Two.Vector(-10, -10)]
-        var enemy = new Enemy();
+        var rails = [new Two.Vector(3, 4), new Two.Vector(5, -3)]
+        var speed = 1;
+        var spawn = new Two.Vector(150, 150);
+        var death = function(e) {
+
+        }
+        var enemy = new Enemy(speed, spawn, rails, death, rect);
 
         two.bind('update', function(frameCount) {
            if(keys["Control"]) {
@@ -51,6 +56,7 @@
            }
 
             two.scene.translation.addSelf(panSpeed);
+            enemy.update(two.timeDelta);
 
         }).play();  // Finally, start the animation loop
 

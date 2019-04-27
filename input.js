@@ -10,7 +10,6 @@ function mouse(e) {
     if(Math.abs(mouseDelta.x) <= 1 && Math.abs(mouseDelta.y) <=1) {
         mouseDelta.clear();
     }
-    console.log(mouseDelta);
     mousePos.copy(currentMouse);
 }
 document.onmousemove = mouse;
