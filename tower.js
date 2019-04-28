@@ -9,11 +9,11 @@ class Tower {
 		this.draw = this.draw.bind(this);
 		this.time = 0;
 		//this.tower_group = two.interpret(this.tower_svg);
-        var newRect = two.makeRectangle(0, 0, 100, 100);
-        newRect.fill= '#00FFFF';
-        this.tower_group = two.makeGroup(newRect);
+		var newRect = two.makeRectangle(0, 0, 100, 100);
+		newRect.fill= '#00FFFF';
+		this.tower_group = two.makeGroup(newRect);
 		this.tower_group.translation = new Two.Vector(this.position.x, this.position.y);
-        gameLayer.add(this.tower_group);
+		gameLayer.add(this.tower_group);
 		this.projectiles = []
 	}
 
@@ -24,20 +24,18 @@ class Tower {
 				var dx = enemies[i].position.x - this.position.x;
 				var dy = enemies[i].position.y - this.position.y;
 				var r = Math.sqrt(dx * dx + dy * dy);
-				console.log("distance: " + r);
 				if (r <= this.damage_radius) {
 					enemies[i].attack(this.damage_value);
 					//var projectile = two.interpret(this.projectile_svg);
 					//projectile.translation.copy(this.position);
 					//this.projectiles.push(projectile)
 					//projectile.trajectory = new Two.Vector(dx, dy)
-                    var dist = Math.sqrt(dx*dx + dy*dy);
 					var angle = Math.atan2(dy,dx);
-					var laser = two.makeRectangle(this.position.x + Math.cos(angle)*dist/2, this.position.y + Math.sin(angle)*dist/2, dist , 10);
-                    laser.rotation = angle;
-                    gameLayer.add(laser);
+					var laser = two.makeRectangle(this.position.x + Math.cos(angle)*r/2, this.position.y + Math.sin(angle)*r/2, r , 10);
+					laser.rotation = angle;
+					gameLayer.add(laser);
 					setTimeout( () => {gameLayer.remove(laser);}, 100);
-                    
+
 				}
 
 			}
