@@ -30,8 +30,10 @@ for i in svgStrings:
 print """
 	</body>
 
+	<script src="./util.js"></script>
 	<script src="./input.js"></script>
 	<script src="./enemy.js"></script>
+    <script src="./shop.js"></script>
 	<script src="./tower.js"></script>
 	<script src="./game.js"></script>
 </html>
