@@ -30,6 +30,18 @@ for i in svgStrings:
 print """
 	</body>
 
+        <script> //All global vars are defined here
+        var two = new Two({fullscreen: true}).appendTo(document.getElementById('draw-shapes')); 
+        var state = 0;
+        var shopState = 0;
+        var placementState = 0;
+        var enemies = [];
+        var towers = [];
+        var tileLayer = two.makeGroup();
+        var gameLayer = two.makeGroup();
+        var UILayer = two.makeGroup();
+        </script>
+
 	<script src="./util.js"></script>
 	<script src="./input.js"></script>
 	<script src="./enemy.js"></script>
