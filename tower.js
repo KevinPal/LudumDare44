@@ -66,7 +66,7 @@ class Tower {
 
             setTimeout( () => {
                 gameLayer.remove(laser);
-            }, 100);
+            }, 100/gameSpeed);
             this.time = 0;
         }
     }
@@ -91,7 +91,7 @@ class Tower {
             for (var i = 0; i < lasers.length; i++) {
                 gameLayer.remove(lasers[i]);
             }
-        }, 100);
+        }, 100/gameSpeed);
         this.time -= this.fire_rate;
     }
 
@@ -119,13 +119,13 @@ class Tower {
             for (var i = 0; i < affected.length; i++) {
                 affected[i].speed *= 2;
             }
-        }, this.fire_rate/2);
+        }, this.fire_rate/2/gameSpeed);
 
         setTimeout( () => {
             for (var i = 0; i < lasers.length; i++) {
                 gameLayer.remove(lasers[i]);
             }
-        }, 100);
+        }, 100/gameSpeed);
         this.time -= this.fire_rate;
     }
 

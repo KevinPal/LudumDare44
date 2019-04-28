@@ -8,16 +8,16 @@ var tower3 = two.makeRectangle(-w/8, h/8, w/6, h/6);
 var tower4 = two.makeRectangle(w/8, h/8, w/6, h/6);
 
 
-var tower1_lb = new Two.Text("Standard Turret - 5G");
+var tower1_lb = new Two.Text("Standard Turret - 500G");
 tower1_lb.translation = new Two.Vector(-w/8, -h/8+h/14);
 
-var tower2_lb = new Two.Text("AOE Turret - 50G");
+var tower2_lb = new Two.Text("AOE Turret - 5000G");
 tower2_lb.translation = new Two.Vector(w/8, -h/8+h/14)
 
-var tower3_lb = new Two.Text("Slowing Turret - 25G");
+var tower3_lb = new Two.Text("Slowing Turret - 2500G");
 tower3_lb.translation = new Two.Vector(-w/8, h/8+h/14)
 
-var tower4_lb = new Two.Text("Sniper Turret - 15G");
+var tower4_lb = new Two.Text("Sniper Turret - 1500G");
 tower4_lb.translation = new Two.Vector(w/8, h/8+h/14)
 
 
