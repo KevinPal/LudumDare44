@@ -1,12 +1,20 @@
 var w = two.width;
 var h = two.height;
-
+var towerSelectionId = 0;
 var shopBG = two.makeRectangle(0, 0, w/2, h/2);
 var tower1 = two.makeRectangle(-w/8, -h/8, w/6, h/6);
 var tower2 = two.makeRectangle(w/8, -h/8, w/6, h/6);
 var tower3 = two.makeRectangle(-w/8, h/8, w/6, h/6);
 var tower4 = two.makeRectangle(w/8, h/8, w/6, h/6);
-var shopGroupPanel = two.makeGroup(shopBG, tower1, tower2, tower3, tower4);
+
+
+var tower1_lb = new Two.Text("Standard Turret - 5G");
+tower1_lb.translation = new Two.Vector(-w/8, -h/8+h/14);
+
+var tower2_lb = new Two.Text("AOE Turret - 50G");
+tower2_lb.translation = new Two.Vector(w/8, -h/8+h/14)
+
+var shopGroupPanel = two.makeGroup(shopBG, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb);
 shopGroupPanel.translation = new Two.Vector(w/2, h/2);
 
 
@@ -20,10 +28,13 @@ tower2._renderer.elem.onclick = placeTowerWrapper(2);
 tower3._renderer.elem.onclick = placeTowerWrapper(3);
 tower4._renderer.elem.onclick = placeTowerWrapper(4);
 
+
 function placeTowerWrapper(towerNum) {
-    var tower = tower;
+
     foo =  function() {
         shopState = 3;
+        towerSelectionId = towerNum;
+        console.log("Selected turret " + towerSelectionId);
     }
     return foo;
 }
@@ -37,15 +48,19 @@ function generateTileBoard(spawn, rails) {
 
     function onTileClick() {
         if(state == 2) {
-			if (player_currency >= 5) {
-				console.log(selectedTile.translation);
-				var placementPos = selectedTile.translation.clone();
-				var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), placementPos);
-
-				//yeet on your money
-				player_currency -= 5;
-
-				towers.push(tower);
+            if(towerSelectionId == 1) {
+                var placementPos = selectedTile.translation.clone();
+                if (player_currency >= 5) {
+                    var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
+                    player_currency -= 5;
+                    towers.push(tower);
+                }
+            } else if(towerSelectionId == 2){
+                if(player_currency >= 50) {
+                    var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 2, placementPos);
+                    player_currency -= 5;
+                    towers.push(tower);
+                }
 			}
 			state = 1;
 			shopState = 0;

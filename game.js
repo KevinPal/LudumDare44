@@ -32,15 +32,19 @@ shopBtn.fill = shopBtnText;
 shopBtn.noStroke();
 
 var level = 0;
-var levelIsRunning = true;
+var levelRunningState = 0; //0 -> waiting for current enemies to die
+//1 -> spawning enemies
+//2 -> level transition time
 
 function enemySpawns() {
     return [[[3, 0, 0, 0],
             [2, 0, 0, 0]],
             [[5, 1, 0, 0],
             [1, 3, 0, 0]],
-            [[10, 5, 0, 0],
-            [2, 3, 0, 0]]];
+            [[10, 5, 2, 0],
+            [2, 1, .5, 0]],
+            [[10, 10, 3, 1],
+            [0.5, 0.25, 1, 1]]];
 }
 
 var currentEnemy = 0;
@@ -54,15 +58,14 @@ two.bind('update', function(frameCount) {
 
         var spawns = enemySpawns()[level];
         spawnTimer += two.timeDelta/1000;
-        if(spawnTimer >= spawns[1][currentEnemy] && levelIsRunning) {
+        if(spawnTimer >= spawns[1][currentEnemy] && levelRunningState == 1) {
             spawnTimer -= spawns[1][currentEnemy];
 
             if(numEnemiesSpawned >= spawns[0][currentEnemy]) {
                 numEnemiesSpawned = 0;
                 currentEnemy++;
                 if(currentEnemy >= numEnemies) {
-                    levelIsRunning = false;
-					setTimeout(() => {levelIsRunning = true; level++;currentEnemy = 0, numEnemySpawn=0, spawnTimer=0}, 5000);
+                    levelRunningState = 0;
                 }
             } else {
                 var newRect = two.makeRectangle(0, 0, 100, 100);
@@ -72,6 +75,11 @@ two.bind('update', function(frameCount) {
                 enemies.push(enemy);
                 numEnemiesSpawned++;
             }
+        }
+
+        if(levelRunningState == 0 && enemies.length == 0) {
+            levelRunningState = 2;
+			setTimeout(() => {levelRunningState = 1; level++;currentEnemy = 0, numEnemySpawn=0, spawnTimer=0}, 5000);
         }
 
         for(var i = 0; i < enemies.length; i++) {
