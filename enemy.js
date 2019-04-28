@@ -4,13 +4,14 @@ class Enemy {
         var currentRail = this.rails[this.currentRail]
         var currentRailLen = currentRail.length();
         if(this.d > currentRailLen) {
-            console.log("Swapping rails");
             this.vecRailPos.add(this.vecRailPos, currentRail);
             this.d -= currentRailLen;
             this.currentRail += 1;
             currentRail = this.rails[this.currentRail]
             if(!currentRail) {
+            	gameLayer.remove(this.enemyGroup);
                 this.destroy(this);
+                this.attack_player();
                 return;
             }
         }
@@ -20,11 +21,12 @@ class Enemy {
         this.position = new Two.Vector(this.vecRailPos.x + this.d * Math.cos(angle), this.vecRailPos.y + this.d * Math.sin(angle));
 
         this.enemyGroup.translation.copy(this.position);
-	
     }
+	
 
 
-    constructor(speed, spawn, rails, deathFunction, health, svg) {
+
+    constructor(speed, spawn, rails, deathFunction, health, attack, svg) {
         this.speed = speed;
         this.d = 0;
         this.enemyGroup = svg;
@@ -38,6 +40,7 @@ class Enemy {
         this.rails = rails;
 
         this.health = health;
+	    this.attack = attack;
     }
 
 
@@ -48,5 +51,14 @@ class Enemy {
             this.destroy(this);
 	    }
     }
+
+	attack_player() {
+		// if the player_was at max health before, reset the regen_time
+		if (player_health == player_max_health) {
+			regen_time = 0;
+		}
+		player_health -= this.attack;
+		player_currency += this.attack;
+	}
 
 }

@@ -1,7 +1,6 @@
 var rails = [new Two.Vector(300, 0), new Two.Vector(0, 100),
 new Two.Vector(200, 0), new Two.Vector(0, 500),
-new Two.Vector(-300, 0), new Two.Vector(0, 100)]
-
+new Two.Vector(-300, 0), new Two.Vector(0, 100)] 
 
 var speed = 100;
 var spawn = new Two.Vector(150, 150);
@@ -50,7 +49,6 @@ var spawnTimer = 0;
 var numEnemies = 4;
 
 two.bind('update', function(frameCount) {
-
     if(state == 0) {
         
 
@@ -68,7 +66,7 @@ two.bind('update', function(frameCount) {
             } else {
                 var newRect = two.makeRectangle(0, 0, 100, 100);
                 newRect.fill = '#FF00FF';
-                var enemy = new Enemy(100 * (currentEnemy+1), spawn, rails, death, 5, newRect);
+                var enemy = new Enemy(100 * (currentEnemy+1), spawn, rails, death, 5, 5, newRect);
                 console.log("Spawning enemy type " + currentEnemy);
                 enemies.push(enemy);
                 numEnemiesSpawned++;
@@ -81,6 +79,20 @@ two.bind('update', function(frameCount) {
         for(var i = 0; i < towers.length; i++) {
             towers[i].draw(enemies, two.timeDelta);
         }
+		// update health and currency
+
+		if (player_health < player_max_health) {
+			if (regen_time > player_regen_rate) {
+				regen_time -= player_regen_rate;
+				player_health += 1;
+			}
+			regen_time += two.timeDelta;
+		}
+
+		// update health and currency ui
+		two_health.value = "" + player_health;
+		two_currency.value = "" + player_currency;
+
     } 
     shopUpdate(two.timeDelta);
     placementUpdate(two.timeDelta);
