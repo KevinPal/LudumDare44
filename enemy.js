@@ -27,7 +27,7 @@ class Enemy {
     constructor(speed, spawn, rails, deathFunction, health, svg) {
         this.speed = speed;
         this.d = 0;
-        this.enemyGroup = two.interpret(svg);
+        this.enemyGroup = svg;
         gameLayer.add(this.enemyGroup);
         this.update = this.update.bind(this);
         this.destroy = deathFunction;
