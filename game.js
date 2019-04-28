@@ -60,8 +60,9 @@ two.bind('update', function(frameCount) {
             if(numEnemiesSpawned >= spawns[0][currentEnemy]) {
                 numEnemiesSpawned = 0;
                 currentEnemy++;
-                if(currentEnemy > numEnemies) {
+                if(currentEnemy >= numEnemies) {
                     levelIsRunning = false;
+					setTimeout(() => {levelIsRunning = true; level++;currentEnemy = 0, numEnemySpawn=0, spawnTimer=0}, 5000);
                 }
             } else {
                 var newRect = two.makeRectangle(0, 0, 100, 100);

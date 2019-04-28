@@ -20,6 +20,7 @@ class Tower {
 	draw(enemies, deltaTime){
 		this.time += deltaTime;
 		if (this.time > this.fire_rate){
+			var lasers = []
 			for (var i = 0; i < enemies.length; i++) {
 				var dx = enemies[i].position.x - this.position.x;
 				var dy = enemies[i].position.y - this.position.y;
@@ -34,11 +35,15 @@ class Tower {
 					var laser = two.makeRectangle(this.position.x + Math.cos(angle)*r/2, this.position.y + Math.sin(angle)*r/2, r , 10);
 					laser.rotation = angle;
 					gameLayer.add(laser);
-					setTimeout( () => {gameLayer.remove(laser);}, 100);
-
+					lasers.push(laser)
 				}
 
 			}
+			setTimeout( () => {
+				for (var i = 0; i < lasers.length; i++) {
+					gameLayer.remove(lasers[i]);
+				}
+			}, 100);
 			this.time -= this.fire_rate;
 		}
 	}

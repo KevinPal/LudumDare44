@@ -48,7 +48,7 @@ function generateTileBoard(spawn, rails) {
 				towers.push(tower);
 			}
 			state = 1;
-			shop_state = 0;
+			shopState = 0;
         }
     }
     
