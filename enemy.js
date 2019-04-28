@@ -59,6 +59,11 @@ class Enemy {
 		}
 		player_health -= this.attack_value;
 		player_currency += this.attack_value;
+		if (player_health <= 0) {
+			console.log("You Lose!");
+			window.alert("You Lose!");
+			window.location.replace("./index.html");
+		}
 	}
 
 }
