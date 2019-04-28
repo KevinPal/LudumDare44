@@ -27,6 +27,8 @@ class Tower {
                 this.turretType1Fire(enemies);
             } else if(this.type == 2) {
                 this.turretType2Fire(enemies);
+            } else if(this.type == 3) {
+                this.turretType3Fire(enemies);
             }
         }
 	}
@@ -85,6 +87,40 @@ class Tower {
             }
 
         }
+        setTimeout( () => {
+            for (var i = 0; i < lasers.length; i++) {
+                gameLayer.remove(lasers[i]);
+            }
+        }, 100);
+        this.time -= this.fire_rate;
+    }
+
+
+    turretType3Fire(enemies) {
+        var lasers = [];
+        var affected = [];
+        for (var i = 0; i < enemies.length; i++) {
+            var dx = enemies[i].position.x - this.position.x;
+            var dy = enemies[i].position.y - this.position.y;
+            var r = Math.sqrt(dx * dx + dy * dy);
+            if (r <= this.damage_radius) {
+                enemies[i].speed /= 2;
+                affected.push(enemies[i]);
+                var angle = Math.atan2(dy,dx);
+                var laser = two.makeRectangle(this.position.x + Math.cos(angle)*r/2, this.position.y + Math.sin(angle)*r/2, r , 10);
+                laser.rotation = angle;
+                gameLayer.add(laser);
+                lasers.push(laser)
+            }
+
+        }
+
+        setTimeout( () => {
+            for (var i = 0; i < affected.length; i++) {
+                affected[i].speed *= 2;
+            }
+        }, this.fire_rate/2);
+
         setTimeout( () => {
             for (var i = 0; i < lasers.length; i++) {
                 gameLayer.remove(lasers[i]);

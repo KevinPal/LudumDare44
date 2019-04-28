@@ -14,7 +14,14 @@ tower1_lb.translation = new Two.Vector(-w/8, -h/8+h/14);
 var tower2_lb = new Two.Text("AOE Turret - 50G");
 tower2_lb.translation = new Two.Vector(w/8, -h/8+h/14)
 
-var shopGroupPanel = two.makeGroup(shopBG, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb);
+var tower3_lb = new Two.Text("Slowing Turret - 25G");
+tower3_lb.translation = new Two.Vector(-w/8, h/8+h/14)
+
+var tower4_lb = new Two.Text("Sniper Turret - 15G");
+tower4_lb.translation = new Two.Vector(w/8, h/8+h/14)
+
+
+var shopGroupPanel = two.makeGroup(shopBG, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb, tower3_lb, tower4_lb);
 shopGroupPanel.translation = new Two.Vector(w/2, h/2);
 
 
@@ -48,8 +55,8 @@ function generateTileBoard(spawn, rails) {
 
     function onTileClick() {
         if(state == 2) {
+            var placementPos = selectedTile.translation.clone();
             if(towerSelectionId == 1) {
-                var placementPos = selectedTile.translation.clone();
                 if (player_currency >= 5) {
                     var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
                     player_currency -= 5;
@@ -58,10 +65,23 @@ function generateTileBoard(spawn, rails) {
             } else if(towerSelectionId == 2){
                 if(player_currency >= 50) {
                     var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 2, placementPos);
-                    player_currency -= 5;
+                    player_currency -= 50;
+                    towers.push(tower);
+                }
+            } else if(towerSelectionId == 3){
+                if(player_currency >= 25) {
+                    var tower = new Tower(500, 0, 5000, document.getElementById('tower'), document.getElementById('tower'), 3, placementPos);
+                    player_currency -= 25;
+                    towers.push(tower);
+                }
+			} else if(towerSelectionId == 4){
+                if(player_currency >= 15) {
+                    var tower = new Tower(50000, 10, 10000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
+                    player_currency -= 25;
                     towers.push(tower);
                 }
 			}
+
 			state = 1;
 			shopState = 0;
         }
