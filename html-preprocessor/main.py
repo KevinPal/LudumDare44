@@ -21,6 +21,7 @@ print """
 		<script src="./two.min.js"></script>
 	</head>
 	<body>
+                <img id="shop_btn" src="./res/Buttons/BTNs/Shop_BTN.png" />
 		<div class="game" id="draw-shapes" style="text-align: center">
 		</div>
 """
@@ -31,15 +32,12 @@ print """
 	</body>
 
         <script> //All global vars are defined here
-        var two = new Two({fullscreen: true}).appendTo(document.getElementById('draw-shapes')); 
-        var state = 0;
-        var shopState = 0;
-        var placementState = 0;
-        var enemies = [];
-        var towers = [];
-        var tileLayer = two.makeGroup();
-        var gameLayer = two.makeGroup();
-        var UILayer = two.makeGroup();
+    """
+f = open("global-var.js")
+if f.mode == 'r':
+    contents = f.read()
+    print contents
+print """
         </script>
 
 	<script src="./util.js"></script>
