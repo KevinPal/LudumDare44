@@ -37,13 +37,19 @@ function generateTileBoard(spawn, rails) {
 
     function onTileClick() {
         if(state == 2) {
-            console.log(selectedTile.translation);
-            var placementPos = selectedTile.translation.clone();
-            var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), placementPos);
-            towers.push(tower);
-            state = 1;
-            shopState = 0;
-            }
+			if (player_currency >= 5) {
+				console.log(selectedTile.translation);
+				var placementPos = selectedTile.translation.clone();
+				var tower = new Tower(500, 10, 1000, document.getElementById('tower'), document.getElementById('tower'), placementPos);
+
+				//yeet on your money
+				player_currency -= 5;
+
+				towers.push(tower);
+			}
+			state = 1;
+			shop_state = 0;
+        }
     }
     
     for(var i = 0; i < w / towerDim; i++) {
@@ -103,7 +109,6 @@ function placementUpdate(delta) {
             placementTiles[i].fill = '#c9c9c9';
         }
     }
-
 }
 
 function shopUpdate(delta) {

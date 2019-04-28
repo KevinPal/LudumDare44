@@ -26,7 +26,7 @@ class Enemy {
 
 
 
-    constructor(speed, spawn, rails, deathFunction, health, attack, svg) {
+    constructor(speed, spawn, rails, deathFunction, health, attack_value, svg) {
         this.speed = speed;
         this.d = 0;
         this.enemyGroup = svg;
@@ -40,7 +40,7 @@ class Enemy {
         this.rails = rails;
 
         this.health = health;
-	    this.attack = attack;
+	    this.attack_value = attack_value;
     }
 
 
@@ -57,8 +57,8 @@ class Enemy {
 		if (player_health == player_max_health) {
 			regen_time = 0;
 		}
-		player_health -= this.attack;
-		player_currency += this.attack;
+		player_health -= this.attack_value;
+		player_currency += this.attack_value;
 	}
 
 }
