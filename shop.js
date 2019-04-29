@@ -105,7 +105,7 @@ function generateTileBoard(spawn, rails) {
 			} else if(towerSelectionId == 4){
                 if(player_currency >= 15) {
                     var tower = new Tower(50000, 10, 10000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
-                    player_currency -= 25;
+                    player_currency -= 15;
                     towers.push(tower);
                 }
 			}

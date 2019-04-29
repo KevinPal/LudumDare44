@@ -1,5 +1,9 @@
 class Enemy {
     update(deltaTime) {
+
+        var healthColor = HSVtoRGB(this.health/10, 1, 1);
+        this.enemyGroup.fill = 'rgb(' + healthColor.r + ', ' + healthColor.g + ', ' + healthColor.b + ')';
+
         this.d += this.speed * (deltaTime / 1000);
         var currentRail = this.rails[this.currentRail]
         var currentRailLen = currentRail.length();
