@@ -2,9 +2,10 @@ var w = two.width;
 var h = two.height;
 var towerSelectionId = 0;
 
-var shopBG = two.makeRectangle(0, 0, 705, 810);
-var shopBGText = two.makeTexture(document.getElementById('shop'));
-shopBG.fill = shopBGText;
+//var shopBG = two.makeRectangle(0, 0, 705, 810);
+var shopBG = two.interpret(document.getElementById('shop'));
+//var shopBGText = two.makeTexture(document.getElementById('shop'));
+//shopBG.fill = shopBGText;
 shopBG.noStroke();
 
 
