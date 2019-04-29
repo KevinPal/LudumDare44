@@ -1,4 +1,5 @@
 var two = new Two({fullscreen: true}).appendTo(document.getElementById('draw-shapes'));
+two.load('res/bg.svg', function(svg) {})
 var state = 0;
 var shopState = 0;
 var placementState = 0;
