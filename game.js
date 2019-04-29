@@ -154,7 +154,7 @@ two.bind('update', function(frameCount) {
 				regen_time -= player_regen_rate;
 				player_health += 1;
 			}
-			regen_time += two.timeDelta;
+			regen_time += two.timeDelta * gameSpeed;
 		}
 
 		// update health and currency ui
