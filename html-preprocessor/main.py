@@ -18,6 +18,7 @@ print( """
 	<head>
 		<title>The Game!</title>
 		<link rel="stylesheet" href="styles.css"/>
+		<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
 		<script src="./two.min.js"></script>
 	</head>
 	<body>

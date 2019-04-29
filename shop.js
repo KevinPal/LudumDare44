@@ -29,7 +29,7 @@ tower3.noStroke();
 tower4.noStroke();
 
 var tower1_lb = new Two.Text("Standard Turret - 500G");
-tower1_lb.family = 'zcool kuaile';
+tower1_lb.family = 'ZCOOL KuaiLe';
 tower1_lb.size = 40;
 tower1_lb.translation = new Two.Vector(0, -h/4+50+150*0);
 
