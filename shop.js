@@ -10,7 +10,7 @@ shopBG.translation = new Two.Vector(-350, -400);
 shopBG.noStroke();
 
 
-var shopLabel = two.makeRectangle(shopBG.width/w, 350, 253, 59);
+var shopLabel = two.makeRectangle(0, -320, 253, 59);
 var shopLabelText = two.makeTexture(document.getElementById('shop_label'));
 shopLabel.fill = shopLabelText;
 shopLabel.noStroke();
