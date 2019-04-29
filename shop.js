@@ -86,25 +86,25 @@ function generateTileBoard(spawn, rails) {
             var placementPos = selectedTile.translation.clone();
             if(towerSelectionId == 1) {
                 if (player_currency >= 5) {
-                    var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
+                    var tower = new Tower(500, 1, 1000, document.getElementById('tower1'), 1, placementPos);
                     player_currency -= 5;
                     towers.push(tower);
                 }
             } else if(towerSelectionId == 2){
                 if(player_currency >= 50) {
-                    var tower = new Tower(500, 1, 1000, document.getElementById('tower'), document.getElementById('tower'), 2, placementPos);
+                    var tower = new Tower(500, 1, 1000, document.getElementById('tower2'), 2, placementPos);
                     player_currency -= 50;
                     towers.push(tower);
                 }
             } else if(towerSelectionId == 3){
                 if(player_currency >= 25) {
-                    var tower = new Tower(500, 0, 5000, document.getElementById('tower'), document.getElementById('tower'), 3, placementPos);
+                    var tower = new Tower(500, 0, 5000, document.getElementById('tower3'), 3, placementPos);
                     player_currency -= 25;
                     towers.push(tower);
                 }
 			} else if(towerSelectionId == 4){
                 if(player_currency >= 15) {
-                    var tower = new Tower(50000, 10, 10000, document.getElementById('tower'), document.getElementById('tower'), 1, placementPos);
+                    var tower = new Tower(50000, 10, 10000, document.getElementById('tower4'), 1, placementPos);
                     player_currency -= 15;
                     towers.push(tower);
                 }

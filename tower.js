@@ -1,22 +1,22 @@
 class Tower {
-	constructor(damage_radius, damage_value, fire_rate, tower_svg, projectile_svg, type, position) {
+	constructor(damage_radius, damage_value, fire_rate, tower_svg, type, position) {
 		this.damage_radius = damage_radius;
         this.type = type;
 		this.damage_value = damage_value;
 		this.fire_rate = fire_rate;
 		this.tower_svg = tower_svg;
-		this.projectile_svg = projectile_svg;
 		this.position = position;
 		this.draw = this.draw.bind(this);
         this.turretType1Fire = this.turretType1Fire.bind(this);
         this.turretType2Fire = this.turretType2Fire.bind(this);
+        this.turretType3Fire = this.turretType3Fire.bind(this);
 		this.time = 0;
-		//this.tower_group = two.interpret(this.tower_svg);
-		var newRect = two.makeRectangle(0, 0, 100, 100);
-		newRect.fill= '#00FFFF';
-		this.tower_group = two.makeGroup(newRect);
-		this.tower_group.translation = new Two.Vector(this.position.x, this.position.y);
-		gameLayer.add(this.tower_group);
+		//var newRect = two.makeRectangle(0, 0, 100, 100);
+		//newRect.fill= '#00FFFF';
+		//this.tower_group = two.makeGroup(newRect);
+		this.tower_group = two.interpret(this.tower_svg);
+        this.tower_group.corner();
+		this.tower_group.translation = new Two.Vector(position.x-50, position.y-50);
 		this.projectiles = []
 	}
 
