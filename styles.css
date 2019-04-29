@@ -44,6 +44,8 @@ div.game{
 	top: 0;
 	width: 100vw;
 	height: 100vh;
+	text-align: center; 
+	background-image: url("res/bg.png");
 }
 
 div.Description {

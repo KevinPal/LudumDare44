@@ -11,11 +11,11 @@ var death = function(e) {
 
 generateTileBoard(spawn, rails);
 
-var bg = two.makeRectangle(w/2, h/2, two.width, two.height);
-var bgText = two.makeTexture(document.getElementById('bg_img'));
-bg.fill = bgText;
-bg.noStroke();
-bgLayer.add(bg);
+//var bg = two.makeRectangle(w/2, h/2, two.width, two.height);
+//var bgText = two.makeTexture(document.getElementById('bg_img'));
+//bg.fill = bgText;
+//bg.noStroke();
+//bgLayer.add(bg);
 
 var shopBtnText = two.makeTexture(document.getElementById('shop_btn'));
 var shopBtnActvText = two.makeTexture(document.getElementById('shop_btn_actv'));
