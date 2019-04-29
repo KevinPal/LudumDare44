@@ -9,6 +9,8 @@ class Enemy {
             this.currentRail += 1;
             currentRail = this.rails[this.currentRail]
             if(!currentRail) {
+                var dmg_sound = new Audio('./res/dmg_sound.mp3');
+                dmg_sound.play();
             	gameLayer.remove(this.enemyGroup);
                 this.destroy(this);
                 this.attack_player();
