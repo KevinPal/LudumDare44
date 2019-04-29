@@ -30,6 +30,21 @@ uiBg.translation = new Two.Vector(two.width * .9 - 300, two.height * .85 - 725);
 //uiBg.fill = uiBgText;
 uiBg.noStroke();
 
+var uiText = two.makeGroup();
+var t1 = new Two.Text("You only get currency");
+t1.family = 'ZCOOL KuaiLe';
+t1.size = 40;
+t1.width = 1;
+t1.translation = new Two.Vector(two.width * .9 - 75, two.height * .85 - 450);
+var t2 = new Two.Text("when you lose health.")
+t2.family = 'ZCOOL KuaiLe';
+t2.size = 40;
+t2.width = 1;
+t2.translation = new Two.Vector(two.width * .9 - 75, two.height * .85 - 415);
+uiText.add(t1, t2);
+
+
+
 var hpBarText = two.makeTexture(document.getElementById('hp_bar'));
 var hpBar = two.makeRectangle(two.width * .9 - 75, two.height * .15 , 400, 70);
 hpBar.fill = hpBarText;
@@ -58,7 +73,7 @@ var speedBtn = two.makeRectangle(two.width * .9 - 150, two.height * .85 , 100, 1
 speedBtn.noStroke();
 speedBtn.fill = normalText;
 
-UILayer.add(uiBg, speedBtn, shopBtn, hpBar, hpBarhp, moneyBar, two_currency);
+UILayer.add(uiBg, uiText, speedBtn, shopBtn, hpBar, hpBarhp, moneyBar, two_currency);
 
 two.update();
 
