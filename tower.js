@@ -67,6 +67,7 @@ class Tower {
             var laser = two.makeRectangle(this.position.x + Math.cos(angle)*r/2, this.position.y + Math.sin(angle)*r/2, r , 10);
 			laser.fill = "#FF0000";
             laser.rotation = angle;
+			laser.noStroke()
             gameLayer.add(laser);
             
 
