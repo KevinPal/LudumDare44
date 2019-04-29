@@ -1,12 +1,31 @@
 var w = two.width;
 var h = two.height;
 var towerSelectionId = 0;
-var shopBG = two.makeRectangle(0, 0, w/2, h/2);
-var tower1 = two.makeRectangle(-w/8, -h/8, w/6, h/6);
-var tower2 = two.makeRectangle(w/8, -h/8, w/6, h/6);
-var tower3 = two.makeRectangle(-w/8, h/8, w/6, h/6);
-var tower4 = two.makeRectangle(w/8, h/8, w/6, h/6);
 
+var shopBG = two.makeRectangle(0, 0, 705, 810);
+var shopBGText = two.makeTexture(document.getElementById('shop'));
+shopBG.fill = shopBGText;
+shopBG.noStroke();
+
+
+var shopLabel = two.makeRectangle(shopBG.width/w, -350, 253, 59);
+var shopLabelText = two.makeTexture(document.getElementById('shop_label'));
+shopLabel.fill = shopLabelText;
+shopLabel.noStroke();
+
+var towerText = two.makeTexture(document.getElementById('shop_entry'));
+var tower1 = two.makeRectangle(0, -h/4+50, 650, 125);
+var tower2 = two.makeRectangle(0, -h/4+50+150*1, 650, 125);
+var tower3 = two.makeRectangle(0, -h/4+50+150*2, 650, 125);
+var tower4 = two.makeRectangle(0, -h/4+50+150*3, 650, 125);
+tower1.fill = towerText;
+tower2.fill = towerText;
+tower3.fill = towerText;
+tower4.fill = towerText;
+tower1.noStroke();
+tower2.noStroke();
+tower3.noStroke();
+tower4.noStroke();
 
 var tower1_lb = new Two.Text("Standard Turret - 500G");
 tower1_lb.translation = new Two.Vector(-w/8, -h/8+h/14);
@@ -21,8 +40,8 @@ var tower4_lb = new Two.Text("Sniper Turret - 1500G");
 tower4_lb.translation = new Two.Vector(w/8, h/8+h/14)
 
 
-var shopGroupPanel = two.makeGroup(shopBG, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb, tower3_lb, tower4_lb);
-shopGroupPanel.translation = new Two.Vector(w/2, h/2);
+var shopGroupPanel = two.makeGroup(shopBG, shopLabel, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb, tower3_lb, tower4_lb);
+shopGroupPanel.translation = new Two.Vector(w/2.5, h/2);
 
 
 var shopGroup = two.makeGroup(shopGroupPanel);
