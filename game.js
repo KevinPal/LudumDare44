@@ -24,9 +24,10 @@ shopBtn.fill = shopBtnText;
 shopBtn.noStroke();
 
 
-var uiBgText = two.makeTexture(document.getElementById('ui_bg'));
-var uiBg = two.makeRectangle(two.width * .9 - 75, two.height/2, 450, 800);
-uiBg.fill = uiBgText;
+//var uiBgText = two.makeTexture(document.getElementById('ui_bg'));
+var uiBg = two.interpret(document.getElementById('ui_bg'));
+uiBg.translation = new Two.Vector(two.width * .9 - 300, two.height * .85 - 725);
+//uiBg.fill = uiBgText;
 uiBg.noStroke();
 
 var hpBarText = two.makeTexture(document.getElementById('hp_bar'));

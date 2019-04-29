@@ -23,10 +23,8 @@ print( """
 	<body>
                 <img id="shop_btn" src="./res/shop_btn.png" />
                 <img id="shop_btn_actv" src="./res/shop_btn_actv.png" />
-				<img id="bg_img" src="./res/bg.png" />
                 <img id="normal_btn" src="./res/normal_speed.png" />
                 <img id="fast_btn" src="./res/fast_speed.png" />
-                <img id="ui_bg" src="./res/ui_bg.png" />
                 <img id="hp_bar" src="./res/hp_bar.png" />
                 <img id="hp_bar_hp" src="./res/hp_bar_hp.png" />
                 <img id="money_bar" src="./res/money_bar.png" />

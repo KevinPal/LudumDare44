@@ -4,12 +4,13 @@ var towerSelectionId = 0;
 
 //var shopBG = two.makeRectangle(0, 0, 705, 810);
 var shopBG = two.interpret(document.getElementById('shop'));
+shopBG.translation = new Two.Vector(-350, -400);
 //var shopBGText = two.makeTexture(document.getElementById('shop'));
 //shopBG.fill = shopBGText;
 shopBG.noStroke();
 
 
-var shopLabel = two.makeRectangle(shopBG.width/w, -350, 253, 59);
+var shopLabel = two.makeRectangle(shopBG.width/w, 350, 253, 59);
 var shopLabelText = two.makeTexture(document.getElementById('shop_label'));
 shopLabel.fill = shopLabelText;
 shopLabel.noStroke();
@@ -21,8 +22,7 @@ var tower3 = two.makeRectangle(0, -h/4+50+150*2, 650, 125);
 var tower4 = two.makeRectangle(0, -h/4+50+150*3, 650, 125);
 tower1.fill = towerText;
 tower2.fill = towerText;
-tower3.fill = towerText;
-tower4.fill = towerText;
+tower3.fill = towerText; tower4.fill = towerText;
 tower1.noStroke();
 tower2.noStroke();
 tower3.noStroke();

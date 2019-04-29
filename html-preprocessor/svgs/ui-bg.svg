@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg id="shop" width="705" height="810" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg id="ui_bg" width="450" height="800" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
       <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
 		  <stop class="stop1" offset="0%" style="stop-color:rgb(46,48,86)" />
@@ -8,13 +8,10 @@
 		  <stop class="stop3" offset="100%" style="stop-color:rgb(46,48,86)" />
       </linearGradient>
       <style type="text/css"><![CDATA[
-        #poly1 { fill: url(#Gradient1); stroke:rgb(125, 215, 213); stroke-width: 5 }
+        #rect1 { fill: url(#Gradient1); rx:"15%"; ry:"15%"; stroke:rgb(125, 215, 213); stroke-width: 5 }
       ]]></style>
   </defs>
  
-  <!--<polygon id="poly1" points="0,50 50,0 705,0 705,810 0,810"/>-->
-  <!--<polygon id="poly1" points="0,50 50,0 655,0 705,50 705,810 0,810"/>-->
-  <!--<polygon id="poly1" points="0,50 50,0 655,0 705,50 705,760 655,810 0,810"/>-->
-  <polygon id="poly1" points="0,50 50,0 655,0 705,50 705,760 655,810 50,810 0,760"/>
+  <rect id="rect1" x="0" y="0" width="450" height="800"/>
   
 </svg>
