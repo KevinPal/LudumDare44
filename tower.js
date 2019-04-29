@@ -16,6 +16,7 @@ class Tower {
 		//this.tower_group = two.makeGroup(newRect);
 		this.tower_group = two.interpret(this.tower_svg);
         this.tower_group.corner();
+        gameLayer.add(this.tower_group);
 		this.tower_group.translation = new Two.Vector(position.x-50, position.y-50);
 		this.projectiles = []
 	}
@@ -23,6 +24,7 @@ class Tower {
 	draw(enemies, deltaTime){
 		this.time += deltaTime;
 		if (this.time > this.fire_rate){
+
             if(this.type == 1) {
                 this.turretType1Fire(enemies);
             } else if(this.type == 2) {
@@ -54,6 +56,9 @@ class Tower {
             }
         }
         if(enemy) {
+
+            var dmg_sound = new Audio('./res/shoot.mp3');
+            dmg_sound.play();
             var dx = enemy.position.x - this.position.x;
             var dy = enemy.position.y - this.position.y;
 
@@ -78,6 +83,9 @@ class Tower {
             var dy = enemies[i].position.y - this.position.y;
             var r = Math.sqrt(dx * dx + dy * dy);
             if (r <= this.damage_radius) {
+
+                var dmg_sound = new Audio('./res/shoot.mp3');
+                dmg_sound.play();
                 enemies[i].attack(this.damage_value);
                 var angle = Math.atan2(dy,dx);
                 var laser = two.makeRectangle(this.position.x + Math.cos(angle)*r/2, this.position.y + Math.sin(angle)*r/2, r , 10);
@@ -104,6 +112,9 @@ class Tower {
             var dy = enemies[i].position.y - this.position.y;
             var r = Math.sqrt(dx * dx + dy * dy);
             if (r <= this.damage_radius) {
+                var dmg_sound = new Audio('./res/shoot.mp3');
+                dmg_sound.play();
+
                 enemies[i].speed /= 2;
                 affected.push(enemies[i]);
                 var angle = Math.atan2(dy,dx);
