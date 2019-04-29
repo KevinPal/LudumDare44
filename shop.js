@@ -28,16 +28,24 @@ tower3.noStroke();
 tower4.noStroke();
 
 var tower1_lb = new Two.Text("Standard Turret - 500G");
-tower1_lb.translation = new Two.Vector(-w/8, -h/8+h/14);
+tower1_lb.family = 'zcool kuaile';
+tower1_lb.size = 40;
+tower1_lb.translation = new Two.Vector(0, -h/4+50+150*0);
 
 var tower2_lb = new Two.Text("AOE Turret - 5000G");
-tower2_lb.translation = new Two.Vector(w/8, -h/8+h/14)
+tower2_lb.family = 'zcool kuaile';
+tower2_lb.size = 40;
+tower2_lb.translation = new Two.Vector(0, -h/4+50+150*1);
 
 var tower3_lb = new Two.Text("Slowing Turret - 2500G");
-tower3_lb.translation = new Two.Vector(-w/8, h/8+h/14)
+tower3_lb.family = 'zcool kuaile';
+tower3_lb.size = 40;
+tower3_lb.translation = new Two.Vector(0, -h/4+50+150*2);
 
 var tower4_lb = new Two.Text("Sniper Turret - 1500G");
-tower4_lb.translation = new Two.Vector(w/8, h/8+h/14)
+tower4_lb.family = 'zcool kuaile';
+tower4_lb.size = 40;
+tower4_lb.translation = new Two.Vector(0, -h/4+50+150*3)
 
 
 var shopGroupPanel = two.makeGroup(shopBG, shopLabel, tower1, tower2, tower3, tower4, tower1_lb, tower2_lb, tower3_lb, tower4_lb);
