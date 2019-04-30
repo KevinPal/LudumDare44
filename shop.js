@@ -142,6 +142,13 @@ function generateTileBoard(spawn, rails) {
     for(var i = 0; i < placementTiles.length; i++) {
         if(placementTiles[i]) {
             placementTiles[i]._renderer.elem.onclick = onTileClick;
+            placementTiles[i]._renderer.elem.onmouseover = (function(newSeltile) {
+                var foo = function() {
+                    selectedTile = newSeltile;
+                }
+                return foo;
+            })(placementTiles[i]);
+
         }
     }
 
@@ -164,6 +171,18 @@ function placementUpdate(delta) {
         if(!tile) {
             continue;
         }
+        if(tile == selectedTile) {
+            tile.fill = '#999999';
+        } else {
+            tile.fill = '#c9c9c9';
+        }
+    }
+    /*
+    for(var i = 0; i < placementTiles.length; i++) {
+        var tile = placementTiles[i];
+        if(!tile) {
+            continue;
+        }
         if(tile.translation.x - towerDim/2 < mousePos.x && mousePos.x <= tile.translation.x + towerDim/2 &&
         tile.translation.y + towerDim/2 < mousePos.y && mousePos.y <= tile.translation.y + 3*towerDim/2) {
             placementTiles[i].fill = '#999999';
@@ -171,7 +190,7 @@ function placementUpdate(delta) {
         } else {
             placementTiles[i].fill = '#c9c9c9';
         }
-    }
+    }*/
 }
 
 function shopUpdate(delta) {
