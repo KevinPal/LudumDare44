@@ -64,6 +64,11 @@ tower3._renderer.elem.onclick = placeTowerWrapper(3);
 tower4._renderer.elem.onclick = placeTowerWrapper(4);
 
 
+tower1_lb._renderer.elem.onclick = placeTowerWrapper(1);
+tower2_lb._renderer.elem.onclick = placeTowerWrapper(2);
+tower3_lb._renderer.elem.onclick = placeTowerWrapper(3);
+tower4_lb._renderer.elem.onclick = placeTowerWrapper(4);
+
 function placeTowerWrapper(towerNum) {
 
     foo =  function() {
