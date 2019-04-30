@@ -1,4 +1,7 @@
 var two = new Two({fullscreen: true}).appendTo(document.getElementById('draw-shapes'));
+var scale = Math.min(1, two.width/2000);
+console.log(two.width);
+console.log(scale);
 two.load('res/bg.svg', function(svg) {})
 var state = 0;
 var shopState = 0;
@@ -12,6 +15,12 @@ var tileLayer = two.makeGroup();
 var gameLayer = two.makeGroup();
 var UILayer = two.makeGroup();
 
+bgLayer.scale = scale;
+tileLayer.scale = scale;
+gameLayer.scale = scale;
+UILayer.scale = scale;
+
+var screenWidth = 17 * 100 * scale;
 
 //Player Data
 var player_max_health = 20
